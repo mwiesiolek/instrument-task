@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <Failover name="Failover" primary="Console">
+            <Failovers>
+                <AppenderRef ref="Console"/>
+            </Failovers>
+        </Failover>
+    </Appenders>
+    <Loggers>
+        <AsyncLogger name="pl.mw.instrument" level="debug" />
+        <AsyncLogger name="org.springframework" level="warn" />
+        <AsyncLogger name="org.hibernate" level="info" />
+        <Root level="debug">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>
